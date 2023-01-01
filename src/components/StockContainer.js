@@ -1,11 +1,23 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer() {
+// StockContainer is parent to Stock
+
+function StockContainer({ stocks, addStock }) {
+  const saleList = stocks.map(stock => {
+    return (
+      <Stock
+        key={stock.name}
+        stock={stock}
+        stockClick={addStock}
+      />
+    )
+  })
+
   return (
     <div>
       <h2>Stocks</h2>
-      {/* render stock list here*/}
+      {saleList}
     </div>
   );
 }
